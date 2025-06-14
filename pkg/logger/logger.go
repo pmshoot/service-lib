@@ -7,8 +7,8 @@ import (
 
 	formatters "github.com/fabienm/go-logrus-formatters"
 	graylog "github.com/gemnasium/logrus-graylog-hook"
+	"github.com/pmshoot/service-lib/pkg/lib"
 	"github.com/sirupsen/logrus"
-	"gitlab.rebrainme.com/golang_users_repos/6787/final-project/service-lib/pkg/lib"
 )
 
 // TODO: добавить трэйсер ошибок
