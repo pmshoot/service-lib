@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package hash;
+
+option go_package="hash/;hash";
+
+service Sha3 {
+    rpc Hash(StringArrayRequest) returns (HashArrayResponse) {}
+    rpc Hash_224(StringArrayRequest) returns (HashArrayResponse) {}
+    rpc Hash_256(StringArrayRequest) returns (HashArrayResponse) {}
+    rpc Hash_384(StringArrayRequest) returns (HashArrayResponse) {}
+    rpc Hash_512(StringArrayRequest) returns (HashArrayResponse) {}
+}
+
+
+
+message StringArrayRequest {
+    repeated string stringArray = 1;
+}
+
+message HashArrayResponse {
+    repeated string hashArray = 1;
+    bool success = 2;
+    optional string error = 3;
+}
+
