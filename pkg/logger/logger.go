@@ -17,10 +17,6 @@ import (
 //
 //	errors.WithStack(err))
 
-type Logger struct {
-	*logrus.Logger
-}
-
 const (
 	// log levels
 	TRACELEVEL = "trace"
@@ -43,6 +39,15 @@ const (
 	LOGLEVEL    = "HS_LOG_LEVEL"
 	LOGFILE     = "HS_LOG_FILE"
 )
+
+type Logger struct {
+	*logrus.Entry
+}
+
+func (l *Logger) SetName(name string) *Logger {
+	l.Entry = l.Logger.WithField("name", name)
+	return l
+}
 
 func New() (*Logger, error) {
 	lgr := logrus.New()
@@ -98,6 +103,6 @@ func New() (*Logger, error) {
 	}
 
 	log := new(Logger)
-	log.Logger = lgr
+	log.Entry = lgr.WithFields(logrus.Fields{})
 	return log, nil
 }
